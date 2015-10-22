@@ -11,7 +11,7 @@ end
 users.each do |user|
   counter_1 = 1
   20.times do
-    user.answers.create!( content: Faker::Lorem.sentence, question_id = counter_1)
+    user.answers.create!( content: Faker::Lorem.sentence, question_id: counter_1)
     counter += 1
   end
 end
