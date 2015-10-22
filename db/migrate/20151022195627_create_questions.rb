@@ -4,6 +4,7 @@ class CreateQuestions < ActiveRecord::Migration
       t.integer :asker_id
       t.string :title
       t.string :content
+      t.integer :best_answer_id
 
       t.timestamps null: false
     end
