@@ -9,9 +9,9 @@ end
 
 #Make Answers
 users.each do |user|
-  counter_1 = 1
+  counter = 1
   20.times do
-    user.answers.create!( content: Faker::Lorem.sentence, question_id: counter_1)
+    user.answers.create!( content: Faker::Lorem.sentence, question_id: counter)
     counter += 1
   end
 end
@@ -19,7 +19,8 @@ end
 #Make Best Answers
 users.each do |user|
   user.questions.each do |question|
-    question.best_answer_id = question.answers.last.id
+    q_answers = question.answers
+    question.best_answer_id = q_answers.sample.id
   end
 end
 
