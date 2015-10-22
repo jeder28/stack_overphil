@@ -1,10 +1,10 @@
-10.times do { User.create!( username: Faker::Internet.user_name, email: Faker::Internet.email, password:"password" )}
+10.times { User.create!( username: Faker::Internet.user_name, email: Faker::Internet.email, password:"password" )}
 
 users = User.all
 
 #Make Questions:
 users.each do |user|
-  user.create!()
+  5.times { user.questions.create!( title: Faker::Book.title, content: Faker::Lorem.sentence ) }
 end
 
 #Make Best Answers
