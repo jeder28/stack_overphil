@@ -1,28 +1,23 @@
-== README
+README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to Stack Overphil! An online forum for all coding related questions and answers. 
 
-Things you may want to cover:
+Team Members: Heather Lorenzo, Chanyoung Kim, Phil Sofia, Sarah O'Shea
 
-* Ruby version
+User Stories: 
 
-* System dependencies
+As an asker, I would like to post a question on a coding issue I am having, so that I can get an answer that solves the problem I am having, so I can keep my job.
 
-* Configuration
+As a responder, I want to answer a question to earn points, so everyone will know I am the best coder in the world.
 
-* Database creation
+As a user, I want to search the website to find relevant posts, so I can solve a coding issue, so I can keep my job.
 
-* Database initialization
+As an asker, I want to be able to select the best answer to my question, so that other people will know the best solution, and so I can thank the responder.
 
-* How to run the test suite
+As a user, I want to be able to vote on a post/response, so that the best response shows up first, so I don't lose my mind trying to find an answer to my coding issue.
 
-* Services (job queues, cache servers, search engines, etc.)
+As a user, I want to be able to comment on questions to get clarification from the asker.
 
-* Deployment instructions
+As a user, I want to be able to comment on answers to get clarification from the responder.
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+As an asker, I want to be able to tag my questions so they can be easily found.
