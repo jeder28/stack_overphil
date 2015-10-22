@@ -35,8 +35,8 @@ end
 #Make Comments on Answers
 
 users.each do |user|
-  user.questions.each do |question|
-      5.times { question.answers.create!(content: Faker::Lorem.sentence, responder_id: (rand(10) + 1) ) }
+  user.answers.each do |answer|
+      5.times { answer.responses.create!(content: Faker::Lorem.sentence, responder_id: (rand(10) + 1) ) }
   end
 end
 
