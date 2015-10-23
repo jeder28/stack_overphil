@@ -9,6 +9,6 @@ class Answer < ActiveRecord::Base
   validates :content, presence: true
 
   def vote_count
-    self.vote_count = self.votes.sum(:value)
+    self.votes.sum(:value)
   end
 end
