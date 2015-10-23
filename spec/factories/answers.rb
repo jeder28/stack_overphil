@@ -1,8 +1,11 @@
 FactoryGirl.define do
   factory :answer do
-    responder_id 1
+    # responder_id 1
+    association :responder, factory: :user
     content Faker::Lorem.sentence
-    question_id Question.all.sample.id
+    question
+    # question_id Question.all.sample.id
+    # association :question, factory: :question
   end
 
 end
