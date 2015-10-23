@@ -5,4 +5,6 @@ class Question < ActiveRecord::Base
     has_many :tags, through: :taggings
     has_many :responses, as: :respondable
     has_many :votes, as: :votable
+
+    validates :title, presence: :true, length: { maxium: 500 }, allow_blank: false
 end
