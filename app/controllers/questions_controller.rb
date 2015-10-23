@@ -18,6 +18,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find_by(id: params[:id])
+    @question.update_attributes(:view_count, view_count + 1)
     @answer = Answer.new
   end
 
