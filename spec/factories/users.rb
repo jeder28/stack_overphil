@@ -1,10 +1,8 @@
 FactoryGirl.define do
   factory :user do
-    username "MyString"
-email "MyString"
-provider "MyString"
-uid "MyString"
-password_digest "MyString"
+    username Faker::Internet.user_name
+    email Faker::Internet.email
+    password_digest Faker::Internet.password
   end
 
 end
