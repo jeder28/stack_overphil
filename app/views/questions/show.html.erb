@@ -1,6 +1,14 @@
 <%= render @question %>
 <%= render "answers/answer_form.html", :question => @question %><br />
-
 <% @question.sorted_answers.each do |answer| %>
+  <% if @question.best_answer_id == answer.id %>
+      <strong>**BEST ANSWER**:</strong>
+  <% end %>
   <%= render answer %>
+  <% if @question.best_answer_id == nil %>
+      <%= form_tag('/best', :method=>'post') do %>
+        <%= hidden_field_tag "best_answer_id", "#{answer.id}" %>
+        <%= submit_tag "Mark this as the best answer" %>
+      <% end %>
+  <% end %>
 <% end %>
