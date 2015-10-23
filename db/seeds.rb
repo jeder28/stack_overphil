@@ -68,3 +68,8 @@ questions.each do |q|
   num = rand(3) + 1
   num.times { q.tags.create!(name: Faker::Commerce.department(1, true)) }
 end
+
+Question.all.each do |q|
+  q.count_votes
+  q.save
+end
