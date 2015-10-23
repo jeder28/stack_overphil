@@ -3,16 +3,25 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @question = Question.new
+    if logged_in?
+      @question = Question.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create
-    @question = Question.new(params[:question].permit(:title, :content))
-    if @question.save
-      redirect_to question_path(@question)
+    if logged_in?
+      @question = Question.new(params[:question].permit(:title, :content))
+      @question.asker_id = current_user.id
+      if @question.save
+        redirect_to question_path(@question)
+      else
+        flash[:notice] = @question.errors.full_messages.join(", ")
+        render :new
+      end
     else
-      flash[:notice] = @question.errors.full_messages.join(", ")
-      render :new
+      redirect_to root_path
     end
   end
 
@@ -20,7 +29,4 @@ class QuestionsController < ApplicationController
     @question = Question.find_by(id: params[:id])
     @answer = Answer.new
   end
-
-
-
 end
