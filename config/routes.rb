@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   resources :questions, only: [:index, :new, :create, :show] do
-    resources :answers, only: [:index, :new, :create, :show] do
-      resources :comments, only: [:index, :new, :create, :show]
-      resources :votes, only: [:new, :create]
-    end
-    resources :comments, only: [:index, :new, :create, :show]
+    resources :answers, only: [:index, :new, :create]
+    resources :responses, only: [:index, :new, :create, :show]
+    resources :votes, only: [:new, :create]
+  end
+
+  resources :answers, only: [:show] do
+    resources :responses, only: [:index, :new, :create, :show]
     resources :votes, only: [:new, :create]
   end
 
