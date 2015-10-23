@@ -7,7 +7,7 @@ class ResponsesController < ApplicationController
 
   def create
     @question = Question.find(params[:question_id])
-    @question.responses.build(responder_id: 1, content: params[:response][:content])
+    @question.responses.build(responder_id: current_user, content: params[:response][:content])
     if @question.save
       redirect_to question_path(@question)
     else
