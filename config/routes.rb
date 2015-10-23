@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :questions, only: [:index, :new, :create, :show] do
     resources :answers, only: [:index, :new, :create]
-    resources :responses, only: [:index, :new, :create, :show]
+    resources :responses, only: [:index, :new, :create, :show] do
+      resources :votes, only: [:new, :create]
+    end
     resources :votes, only: [:new, :create]
   end
 
