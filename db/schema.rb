@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151022204735) do
+ActiveRecord::Schema.define(version: 20151023183540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20151022204735) do
     t.integer  "best_answer_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "vote_count"
   end
 
   create_table "responses", force: :cascade do |t|
@@ -62,6 +63,8 @@ ActiveRecord::Schema.define(version: 20151022204735) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  add_index "users", ["username"], name: "index_users_on_username", using: :btree
 
   create_table "votes", force: :cascade do |t|
     t.integer  "value"
