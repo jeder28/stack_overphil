@@ -16,4 +16,14 @@ class AnswersController < ApplicationController
 
   end
 
+  def best
+    puts "THIS IS PARAMS"
+    puts params
+    puts "ABOVE IS PARAMS"
+    best_answer_id = params[:best_answer_id]
+    @question = Answer.find(best_answer_id).question
+    @question.update_attribute(:best_answer_id, best_answer_id)
+    redirect_to question_path(@question)
+  end
+
 end
