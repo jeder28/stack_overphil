@@ -60,3 +60,11 @@ vote_counter = 10
     vote_counter -= 1
   end
 end
+
+#Make tags for Questions
+questions = Question.all
+
+questions.each do |q|
+  num = rand(3) + 1
+  num.times { q.tags.create!(name: Faker::Commerce.department(1, true)) }
+end
