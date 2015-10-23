@@ -1,0 +1,10 @@
+<%= form_for @response, url: question_responses_path do |f| %>
+    <%= f.hidden_field :question_id, :value => @question.id %>
+  <div>
+    Make a comment: <br> <%= f.text_area :content, size: "60x6" %>
+  </div>
+  <div>
+    <%= f.submit 'comment' %>
+  </div>
+<% end %>
+

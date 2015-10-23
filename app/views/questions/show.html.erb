@@ -1,4 +1,9 @@
 <%= render @question %>
+<%= link_to "comment", new_question_response_path(@question) %>
+<% if @question.responses %>
+  <%= render :partial => "responses/response", :collection => @question.responses %>
+<% end %>
+<hr>
 <%= render "answers/answer_form.html", :question => @question %><br />
 
 <% @question.sorted_answers.each do |answer| %>

@@ -17,16 +17,16 @@ ActiveRecord::Schema.define(version: 20151023194323) do
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
-    t.integer  "answerer_id"
-    t.string   "content"
-    t.integer  "question_id"
+    t.integer  "answerer_id", null: false
+    t.string   "content",     null: false
+    t.integer  "question_id", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "questions", force: :cascade do |t|
-    t.integer  "asker_id"
-    t.string   "title"
+    t.integer  "asker_id",                   null: false
+    t.string   "title",                      null: false
     t.string   "content"
     t.integer  "best_answer_id"
     t.datetime "created_at",                 null: false
@@ -36,10 +36,10 @@ ActiveRecord::Schema.define(version: 20151023194323) do
   end
 
   create_table "responses", force: :cascade do |t|
-    t.string   "content"
-    t.integer  "responder_id"
-    t.integer  "respondable_id"
-    t.string   "respondable_type"
+    t.string   "content",          null: false
+    t.integer  "responder_id",     null: false
+    t.integer  "respondable_id",   null: false
+    t.string   "respondable_type", null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
@@ -50,17 +50,17 @@ ActiveRecord::Schema.define(version: 20151023194323) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "email"
+    t.string   "username",        null: false
+    t.string   "email",           null: false
     t.string   "provider"
     t.string   "uid"
-    t.string   "password_digest"
+    t.string   "password_digest", null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
@@ -68,10 +68,10 @@ ActiveRecord::Schema.define(version: 20151023194323) do
   add_index "users", ["username"], name: "index_users_on_username", using: :btree
 
   create_table "votes", force: :cascade do |t|
-    t.integer  "value"
-    t.integer  "voter_id"
-    t.integer  "votable_id"
-    t.string   "votable_type"
+    t.integer  "value",        null: false
+    t.integer  "voter_id",     null: false
+    t.integer  "votable_id",   null: false
+    t.string   "votable_type", null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
