@@ -21,6 +21,7 @@ users.each do |user|
   user.questions.each do |question|
     q_answers = question.answers
     question.best_answer_id = q_answers.sample.id
+    question.save
   end
 end
 
