@@ -30,6 +30,6 @@ class Question < ActiveRecord::Base
   end
 
   def sort_array_by_points(ans_arr)
-    ans_arr.sort_by{ |ans| ans.votes.count }
+    ans_arr.sort_by{ |ans| ans.vote_count }
   end
 end
