@@ -7,9 +7,9 @@ class ResponsesController < ApplicationController
 
   def create
     @question = Question.find(params[:question_id])
-    @qustion.responses.build(responder_id: 1, content: params[:content])
+    @question.responses.build(responder_id: 1, content: params[:response][:content])
     if @question.save
-      redirect_to questions_show_path(@question)
+      redirect_to question_path(@question)
     else
       flash[:message] = "Failed to comment successfully."
       render :new
