@@ -2,8 +2,7 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new(params[:answer].permit(:content))
     @answer.question = Question.find(params[:question_id])
-    #NEEDS TO BE CHANGED WHEN USER AUTHENTICATION IS SET
-    @answer.answerer = User.first 
+    @answer.answerer = current_user
     if @answer.save
       redirect_to question_path(@answer.question)
     else
@@ -14,7 +13,7 @@ class AnswersController < ApplicationController
   end
 
   def new
-    
+
   end
 
 end
