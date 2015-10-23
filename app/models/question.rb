@@ -10,10 +10,6 @@ class Question < ActiveRecord::Base
 
   validates :title, presence: :true, length: { maxium: 500 }, allow_blank: false
 
-  def arrayify_title
-    title.chomp('?').downcase.split(' ')
-  end
-
   def count_votes
     self.vote_count = self.votes.sum(:value)
   end
@@ -29,7 +25,14 @@ class Question < ActiveRecord::Base
     end
   end
 
+  def arrayify_title
+    title.chomp('?').downcase.split(' ')
+  end
+
+  private
+
+
   def sort_array_by_points(ans_arr)
-    ans_arr.sort_by{ |ans| ans.vote_count }
+    ans_arr.sort_by{ |ans| ans.vote_count }.reverse
   end
 end
