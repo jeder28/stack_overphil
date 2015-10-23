@@ -7,4 +7,8 @@ class Question < ActiveRecord::Base
     has_many :votes, as: :votable
 
     validates :title, presence: :true, length: { maxium: 500 }, allow_blank: false
+
+    def arrayify_title
+      title.chomp('?').downcase.split(' ')
+    end
 end
