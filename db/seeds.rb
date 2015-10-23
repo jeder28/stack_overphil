@@ -21,6 +21,7 @@ users.each do |user|
   user.questions.each do |question|
     q_answers = question.answers
     question.best_answer_id = q_answers.sample.id
+    question.save
   end
 end
 
@@ -58,4 +59,12 @@ vote_counter = 10
     answer.votes.create!( value: rand(10)+1, voter_id: vote_counter)
     vote_counter -= 1
   end
+end
+
+#Make tags for Questions
+questions = Question.all
+
+questions.each do |q|
+  num = rand(3) + 1
+  num.times { q.tags.create!(name: Faker::Commerce.department(1, true)) }
 end
