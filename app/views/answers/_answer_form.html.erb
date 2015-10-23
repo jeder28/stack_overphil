@@ -1,0 +1,6 @@
+<%= form_for @answer, :url => "/questions/#{question.id}/answers" do |f| %>
+  Your answer: <%= f.text_field :content %>
+  <%= f.submit %>
+<% end %>
+
+

@@ -1,1 +1,9 @@
 <%= render @question %>
+<%= render "answers/answer_form.html", :question => @question %><br />
+<% if @question.answers.first %>
+  <% @question.answers.each do |answer| %>
+  Answer: <%= answer.content %><br />
+  Answered by: <%= answer.answerer.username %><br />
+  <br />
+  <% end %>
+<% end %>
