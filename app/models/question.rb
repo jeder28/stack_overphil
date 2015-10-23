@@ -31,7 +31,6 @@ class Question < ActiveRecord::Base
 
   private
 
-
   def sort_array_by_points(ans_arr)
     ans_arr.sort_by{ |ans| ans.vote_count }.reverse
   end
