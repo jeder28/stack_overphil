@@ -7,8 +7,9 @@ class AnswersController < ApplicationController
     if @answer.save
       redirect_to question_path(@answer.question)
     else
+      @question = Question.find(params[:question_id])
       flash[:notice] = @answer.errors.full_messages.join(", ")
-      render :template => 'questions/show.html.erb', :question => Question.find(params[:question_id])
+      render 'questions/show.html.erb'
     end
   end
 
