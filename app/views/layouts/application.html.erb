@@ -10,10 +10,16 @@
 <h2><%= link_to "stackOverphil", root_path %></h2>
 <ul>
 <% if logged_in? %>
-  <li><%= link_to current_user.username, user_path(current_user.id) %> | <%= link_to "logout", logout_path %></li>
+  <li><%= link_to current_user.username, user_path(current_user.id) %> | <%= link_to "logout", logout_path %>
 <% else %>
-  <li><%= link_to "register", register_path %> | <%= link_to "login", login_path %></li>
+  <li><%= link_to "register", register_path %> | <%= link_to "login", login_path %>
 <% end %>
+
+| <%= form_tag('/search', method: 'get') do %>
+  <%= text_field_tag(:terms) %>
+  <%= submit_tag('Search') %>
+<% end %>
+</li>
 </ul>
 <%= yield %>
 
