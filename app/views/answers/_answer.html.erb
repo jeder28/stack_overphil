@@ -1,2 +1,5 @@
-<p><%= answer.content %></p>
-<div>by: <%= answer.answerer.username %></div>
+<p>Answer: <strong><%= answer.content %></strong></p>
+<div>Answered by: <%= answer.answerer.username %></div>
+<%= link_to "comment", new_answer_response_path(answer) %>
+<%= render :partial => "responses/response", :collection => answer.responses %>
+<hr>
