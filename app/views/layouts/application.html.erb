@@ -7,15 +7,40 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h2><%= link_to "stackOverphil", root_path %></h2>
-<ul>
-<% if logged_in? %>
-  <li><%= link_to current_user.username, user_path(current_user.id) %> | <%= link_to "logout", logout_path %></li>
-<% else %>
-  <li><%= link_to "register", register_path %> | <%= link_to "login", login_path %></li>
-<% end %>
-</ul>
-<%= yield %>
-
+  <div class="wrapper">
+    <nav>
+      <div class="content">
+        <ul>
+        <% if logged_in? %>
+          <li><%= link_to current_user.username, user_path(current_user.id) %> | <%= link_to "logout", logout_path %></li>
+        <% else %>
+          <li><%= link_to "register", register_path %> | <%= link_to "login", login_path %></li>
+        <% end %>
+        </ul>
+      </div>
+    </nav>
+    <div class="content">
+      <header>
+        <%= link_to image_tag("stackoverphil-logo.png", :border => 0), root_path %>
+        <div class="btns">
+          <div class="btn">
+            <%= link_to "Ask Question", new_question_path %>
+          </div>
+          <div class="btn">
+            <%= link_to "Tags", url: "#" %>
+          </div>
+        </div>
+      </header>
+      <div id="main">
+       <%= yield %>
+       <div class="push"></div>
+      </div>
+    </div>
+      <footer>
+        <div class="center">
+          <p id="copyright">&copy; stackoverphil 2015</p>
+        </div>
+      </footer>
+  </div>
 </body>
 </html>
