@@ -39,6 +39,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'simplecov', :require => false, :group => :test
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
 end
 
 group :development do
