@@ -25,6 +25,18 @@ class Question < ActiveRecord::Base
     end
   end
 
+  def self.sort_by_votes
+    Question.all.order('vote_count DESC')
+  end
+
+  def self.sort_by_trendiness
+    Question.all.where('created_at < ?', 7.days.ago).order('view_count DESC')
+  end
+
+  def self.sort_by_recentness
+    Question.all.order('created_at DESC')
+  end
+
   def arrayify_title
     title.chomp('?').downcase.split(' ')
   end
