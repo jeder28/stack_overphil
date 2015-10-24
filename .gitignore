@@ -12,8 +12,5 @@
 !/log/.keep
 /tmp
 
-#Ignore test-related files
-/coverage.resultset.json
-/coverage.resultset.json.lock
-/coverage.last_run.json
-/coverage/assets
+# Ignore coverage
+coverage
