@@ -8,7 +8,8 @@ class Answer < ActiveRecord::Base
   validates :answerer, presence: true
   validates :content, presence: true
 
-  def vote_count
-    self.votes.sum(:value)
+  def count_votes
+    total = self.votes.sum(:value)
+    self.update_attribute(:vote_count, total)
   end
 end
