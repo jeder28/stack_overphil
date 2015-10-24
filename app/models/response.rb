@@ -1,6 +1,4 @@
 class Response < ActiveRecord::Base
-  before_save :count_votes
-  
   belongs_to :responder, class_name: :User
   belongs_to :respondable, polymorphic: true
   has_many :votes, as: :votable
@@ -10,8 +8,8 @@ class Response < ActiveRecord::Base
     user.username
   end
 
-
   def count_votes
-    self.vote_count = self.votes.sum(:value)
+    total = self.votes.sum(:value)
+    self.update_attribute(:vote_count, total)
   end
 end
