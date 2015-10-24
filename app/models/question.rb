@@ -1,6 +1,4 @@
 class Question < ActiveRecord::Base
-  before_save :count_votes
-
   belongs_to :asker, class_name: :User
   has_many :answers
   has_many :taggings
@@ -11,7 +9,8 @@ class Question < ActiveRecord::Base
   validates :title, presence: :true, length: { maxium: 500 }, allow_blank: false
 
   def count_votes
-    self.vote_count = self.votes.sum(:value)
+    total = self.votes.sum(:value)
+    self.update_attribute(:vote_count, total)
   end
 
   def sorted_answers
@@ -39,6 +38,10 @@ class Question < ActiveRecord::Base
 
   def arrayify_title
     title.chomp('?').downcase.split(' ')
+  end
+
+  def vote_on_this?(current_user_id)
+    !Vote.find_by(voter_id: current_user_id, votable_id: self.id, votable_type: "Question") && current_user_id != self.asker.id
   end
 
   private

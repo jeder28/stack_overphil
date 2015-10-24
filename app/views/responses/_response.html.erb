@@ -1,2 +1,7 @@
 <p><%= response.content %><br/>
-Commented by: <%= response.responder_name %></p>
+Commented by: <%= response.responder_name %><br />
+<%= render "votes/vote_count", :object => response%>
+<% if response.vote_on_this?(current_user.id)  %>
+  <%= render "votes/vote_form", :object => response, :vote => @vote %>
+<% end %>
+</p>

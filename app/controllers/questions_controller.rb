@@ -29,5 +29,6 @@ class QuestionsController < ApplicationController
     @question = Question.find_by(id: params[:id])
     @question.update_attributes(view_count: (@question.view_count + 1))
     @answer = Answer.new
+    @vote = Vote.new
   end
 end

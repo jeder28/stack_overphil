@@ -8,7 +8,12 @@ class Answer < ActiveRecord::Base
   validates :answerer, presence: true
   validates :content, presence: true
 
-  def vote_count
-    self.votes.sum(:value)
+  def count_votes
+    total = self.votes.sum(:value)
+    self.update_attribute(:vote_count, total)
+  end
+
+  def vote_on_this?(current_user_id)
+    !Vote.find_by(voter_id: current_user_id, votable_id: self.id, votable_type: "Answer") && current_user_id != self.answerer.id
   end
 end
