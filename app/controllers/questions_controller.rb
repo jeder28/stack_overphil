@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
       @question = Question.new
       @tag = Tag.new
     else
-      redirect_to root_path
+      redirect_to login_path
     end
   end
 
@@ -36,10 +36,13 @@ class QuestionsController < ApplicationController
     @vote = Vote.new
   end
 
-  private 
+  private
 
   def tag_params
-   params.require(:question).require(:tag).permit(:name)
- end
+    params.require(:question).require(:tag).permit(:name)
+  end
 
 end
+
+
+
