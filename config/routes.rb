@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#delete'
   post '/best' => 'answers#best'
   root 'welcome#index'
-
+  post '/vote' => 'votes#create'
   get '/:order_by', to: 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
