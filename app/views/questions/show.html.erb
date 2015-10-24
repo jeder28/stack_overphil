@@ -13,7 +13,7 @@
     <%= render "answers/best_answer_identifier" %><br />
   <% end %>
   <%= render answer %>
-  <% if @question.best_answer_id == nil && @question.asker_id == current_user.id %>
+  <% if @question.best_answer_id == nil && @question.asker_id == current_user.id && answer.answerer.id != current_user.id %>
     <%= render "answers/best_answer_form", :answer => answer %><br />
   <% end %>
   <hr>
