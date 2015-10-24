@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h2>stackOverphil</h2>
+<h2><%= link_to "stackOverphil", root_path %></h2>
 <ul>
 <% if logged_in? %>
   <li><%= link_to current_user.username, user_path(current_user.id) %> | <%= link_to "logout", logout_path %></li>
