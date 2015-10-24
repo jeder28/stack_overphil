@@ -6,6 +6,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
+require 'database_cleaner'
 
 require 'simplecov'
 # save to CircleCI's artifacts directory if we're on CircleCI
