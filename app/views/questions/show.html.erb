@@ -9,11 +9,11 @@
 <% end %>
 <%= render "answers/answer_form.html", :question => @question %><br />
 <% @question.sorted_answers.each do |answer| %>
-  <% if @question.best_answer_id == answer.id %>
+  <% if answer.is_best_answer?(@question) %>
     <%= render "answers/best_answer_identifier" %><br />
   <% end %>
   <%= render answer %>
-  <% if @question.best_answer_id == nil && @question.asker_id == current_user.id %>
+  <% if answer.best_answerable?(@question, current_user.id) %>
     <%= render "answers/best_answer_form", :answer => answer %><br />
   <% end %>
   <hr>

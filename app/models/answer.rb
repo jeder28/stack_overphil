@@ -16,4 +16,12 @@ class Answer < ActiveRecord::Base
   def vote_on_this?(current_user_id)
     !Vote.find_by(voter_id: current_user_id, votable_id: self.id, votable_type: "Answer") && current_user_id != self.answerer.id
   end
+
+  def is_best_answer?(question)
+    question.best_answer_id == self.id
+  end
+
+  def best_answerable?(question, current_user_id)
+    question.best_answer_id == nil && question.asker_id == current_user_id && self.answerer.id != current_user_id
+  end
 end
