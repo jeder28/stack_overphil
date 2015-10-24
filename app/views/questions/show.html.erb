@@ -1,6 +1,6 @@
 <%= render @question %>
 <%= render "votes/vote_count", :object => @question%>
-<%= render "votes/questions_vote_form", :object => @question, :vote => @vote %>
+<%= render "votes/vote_form", :object => @question, :vote => @vote %>
 <%= link_to "comment", new_question_response_path(@question) %>
 <% if @question.responses %>
   <%= render :partial => "responses/response", :collection => @question.responses %>
