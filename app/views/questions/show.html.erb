@@ -1,20 +1,26 @@
 <%= render @question %>
 <%= render "votes/vote_count", :object => @question%>
-<% if @question.vote_on_this?(current_user.id)  %>
-  <%= render "votes/vote_form", :object => @question, :vote => @vote %>
+<% if logged_in? %>
+  <% if @question.vote_on_this?(current_user.id)  %>
+    <%= render "votes/vote_form", :object => @question, :vote => @vote %>
+  <% end %>
+  <%= link_to "comment", new_question_response_path(@question) %>
 <% end %>
-<%= link_to "comment", new_question_response_path(@question) %>
 <% if @question.responses %>
   <%= render :partial => "responses/response", :collection => @question.responses %>
 <% end %>
-<%= render "answers/answer_form.html", :question => @question %><br />
-<% @question.sorted_answers.each do |answer| %>
-  <% if answer.is_best_answer?(@question) %>
-    <%= render "answers/best_answer_identifier" %><br />
-  <% end %>
-  <%= render answer %>
-  <% if answer.best_answerable?(@question, current_user.id) %>
-    <%= render "answers/best_answer_form", :answer => answer %><br />
+<% if logged_in? %>
+  <%= render "answers/answer_form.html", :question => @question %><br />
+<% end %>
+  <% @question.sorted_answers.each do |answer| %>
+    <% if answer.is_best_answer?(@question) %>
+      <%= render "answers/best_answer_identifier" %><br />
+    <% end %>
+    <%= render answer %>
+    <% if logged_in? %>
+      <% if answer.best_answerable?(@question, current_user.id) %>
+        <%= render "answers/best_answer_form", :answer => answer %><br />
+      <% end %>
   <% end %>
   <hr>
 <% end %>
