@@ -18,9 +18,10 @@ Rails.application.routes.draw do
   get '/register' => 'users#new'
   get '/login' => 'sessions#new'
   get '/logout' => 'sessions#delete'
-  root 'welcome#index'
   post '/best' => 'answers#best'
+  root 'welcome#index'
 
+  get '/:order_by', to: 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
