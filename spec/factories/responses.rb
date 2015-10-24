@@ -1,14 +1,14 @@
 FactoryGirl.define do
-  factory :answer_response do
+  factory :answer_response, class: "Response" do
     content Faker::Lorem.sentence
-    user
-    answer
+    association :responder, factory: :user
+    association :respondable, factory: :answer
   end
 
-  factory :question_response do
+  factory :question_response, class: "Response" do
     content Faker::Lorem.sentence
-    user
-    question
+    association :responder, factory: :user
+    association :respondable, factory: :question
   end
 
 end
