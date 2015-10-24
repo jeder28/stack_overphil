@@ -40,6 +40,10 @@ class Question < ActiveRecord::Base
     title.chomp('?').downcase.split(' ')
   end
 
+  def vote_on_this?(current_user_id)
+    !Vote.find_by(voter_id: current_user_id, votable_id: self.id, votable_type: "Question") && current_user_id != self.asker.id
+  end
+
   private
 
   def sort_array_by_points(ans_arr)
