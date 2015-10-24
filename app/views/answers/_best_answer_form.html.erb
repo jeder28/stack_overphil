@@ -1,0 +1,4 @@
+<%= form_tag('/best', :method=>'post') do %>
+  <%= hidden_field_tag "best_answer_id", "#{answer.id}" %>
+  <%= submit_tag "Mark this as the best answer" %>
+<% end %>
