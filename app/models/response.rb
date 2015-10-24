@@ -1,4 +1,6 @@
 class Response < ActiveRecord::Base
+  before_save :count_votes
+  
   belongs_to :responder, class_name: :User
   belongs_to :respondable, polymorphic: true
   has_many :votes, as: :votable
@@ -15,5 +17,4 @@ class Response < ActiveRecord::Base
 
   def vote_on_this?(current_user_id)
     !Vote.find_by(voter_id: current_user_id, votable_id: self.id, votable_type: "Response") && current_user_id != self.responder.id
-  end
 end
