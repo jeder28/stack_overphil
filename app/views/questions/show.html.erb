@@ -1,6 +1,6 @@
 <%= render @question %>
 <%= render "votes/vote_count", :object => @question%>
-<% if !Vote.find_by(voter_id: current_user.id, votable_id: @question.id, votable_type: "Question") && current_user.id != @question.asker.id  %>
+<% if @question.vote_on_this?(current_user.id)  %>
   <%= render "votes/vote_form", :object => @question, :vote => @vote %>
 <% end %>
 <%= link_to "comment", new_question_response_path(@question) %>

@@ -1,5 +1,9 @@
 <p>Answer: <strong><%= answer.content %></strong></p>
 <div>Answered by: <%= answer.answerer.username %></div>
+<%= render "votes/vote_count", :object => answer%>
+<% if answer.vote_on_this?(current_user.id)  %>
+  <%= render "votes/vote_form", :object => answer, :vote => @vote %>
+<% end %>
 <%= link_to "comment", new_answer_response_path(answer) %>
 <%= render :partial => "responses/response", :collection => answer.responses %>
 <hr>
