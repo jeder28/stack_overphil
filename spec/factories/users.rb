@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user do
+  factory :user, aliases: [:asker, :answerer, :responder] do
     username Faker::Internet.user_name
     email Faker::Internet.email
     password_digest Faker::Internet.password
