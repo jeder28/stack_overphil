@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   # include SessionsHelper
   protect_from_forgery with: :exception
 
-  helper_method :current_user
+  helper_method :current_user, :logged_in?, :authorize_user
 
   def current_user
     @current_user ||= User.find(session[:user_id])
