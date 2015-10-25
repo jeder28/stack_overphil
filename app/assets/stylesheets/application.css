@@ -334,3 +334,39 @@ td {
 .cf {
     *zoom: 1;
 }
+
+.error-box {
+  margin: 0 auto;
+  height: 2em;
+  width: 50em;
+}
+
+.error-messages-alert {
+  width: 50em;
+  height: 2em;
+  margin-top: 1em;
+  background-color: #F7E5DE;
+  border: 1px solid #E38A8A;
+  border-radius: .25em;
+  text-align: center;
+}
+
+.error-messages-message {
+  width: 50em;
+  height: 2em;
+  margin-top: 1em;
+  background-color: #DEF7EB;
+  border: 1px solid #8AE3B8;
+  border-radius: .25em;
+  text-align: center;
+}
+
+.alert-alert {
+  padding-top: .5em;
+  color: red;
+}
+
+.alert-message {
+  padding-top: .5em;
+  color: green;
+}
