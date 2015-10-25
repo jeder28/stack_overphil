@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Log in Process' do
-    let(:log_me_in) {
+    let(:log_in) {
         user = create(:user)
         visit login_path
         within("#login") do
@@ -18,3 +18,4 @@ describe 'Log in Process' do
       end
   end
 end
+
