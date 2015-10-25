@@ -1,9 +1,13 @@
 class ResponsesController < ApplicationController
 
   def new
-    @parent = parent_object
-    @parent_name = @parent.class.name.downcase.pluralize
-    @response = Response.new
+    if logged_in?
+      @parent = parent_object
+      @parent_name = @parent.class.name.downcase.pluralize
+      @response = Response.new
+    else
+      redirect_to login_path
+    end
   end
 
   def create
