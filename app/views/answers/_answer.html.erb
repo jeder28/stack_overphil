@@ -1,11 +1,28 @@
-<p>Answer: <strong><%= answer.content %></strong></p>
-<div>Answered by: <%= answer.answerer.username %></div>
-<%= render "votes/vote_count", :object => answer%>
-<% if logged_in? %>
-  <% if answer.vote_on_this?(current_user.id)  %>
-    <%= render "votes/vote_form", :object => answer, :vote => @vote %>
-  <% end %>
-  <%= link_to "comment", new_answer_response_path(answer) %>
-<% end %>
-<%= render :partial => "responses/response", :collection => answer.responses %>
-<hr>
+<div class="ques-answer">
+  <div class="content-row">
+    <% if answer.is_best_answer?(answer.question) %>
+        <div class="vote-deets"><%= render "answers/best_answer_identifier" %></div>
+    <% end %>
+    <% if logged_in? %>
+      <% if answer.vote_on_this?(current_user.id)  %>
+        <div class="vote-deets"><%= render "votes/vote_form", :object => answer, :vote => @vote %></div>
+      <% end %>
+      <% if answer.best_answerable?(answer.question, current_user.id) %>
+        <%= render "answers/best_answer_form", :answer => answer %><br>
+      <% end %>
+    <% end %>
+    <div class="left-deets">
+      <p><%= answer.content %></p>
+    </div>
+  </div>
+  <div class="right-deets">
+    <ul>
+      <li><%= time_ago_in_words(answer.updated_at) %></li>
+      <li><%= link_to answer.answerer.username, user_path(answer.answerer) %></li>
+    </ul>
+  </div>
+  <div class="content-row">
+    <%= render :partial => "responses/response", :collection => answer.responses %>
+  </div>
+  <div class="comment-link"><%= link_to "comment", new_answer_response_path(answer) %></div>
+</div>

@@ -9,8 +9,6 @@ describe ResponsesController do
   let(:invalid_ques_response_attrs) { FactoryGirl.build(:question_response, respondable_id:nil).attributes }
   let(:valid_ans_response_attrs) { FactoryGirl.build(:answer_response).attributes }
   let(:invalid_ans_response_attrs) { FactoryGirl.build(:answer_response, respondable_id:nil ).attributes }
-    # @sample_answer_comment = FactoryGirl.create(:answer_response)
-    # @sample_question_comment = FactoryGirl.create(:question_response)
 
   before(:each) do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)

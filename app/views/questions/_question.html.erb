@@ -1,5 +1,49 @@
-<h2><%= question.title%></h2>
-<div>(<%= question.vote_count %>)</div>
-<div>Posted: <%= question.created_at %></div>
-<p><%= question.content%></p>
-
+<div class="ques-answer">
+  <h2><%= question.title%></h2>
+  <div class="content-row">
+    <% if logged_in? %>
+      <% if @question.vote_on_this?(current_user.id)  %>
+        <div class="vote-deets"><%= render "votes/vote_form", :object => @question, :vote => @vote %></div>
+      <% end %>
+    <% end %>
+    <div class="left-deets">
+      <div class="ques-content"><%= question.content%></div>
+    </div>
+    <div class="right-deets">
+      <p>Posted: <%= time_ago_in_words(question.created_at) %></p>
+      <p>Views: <%= question.view_count %></p>
+      <p>Votes: <%= question.vote_count %></p>
+    </div>
+  </div>
+  <div class="content-row">
+    <div class="left-deets">
+        <ul>
+          <%= render :partial => "tags/tag", :collection => @question.tags %>
+        </ul>
+    </div>
+    <div class="right-deets">
+      <ul>
+        <li><%= time_ago_in_words(question.updated_at) %></li>
+        <li><%= link_to question.asker.username, user_path(question.asker) %></li>
+      </ul>
+    </div>
+    <hr class="divider">
+  </div>
+  <% if @question.responses %>
+    <%= render :partial => "responses/response", :collection => @question.responses %>
+  <% end %>
+  <div class="comment-link"><%= link_to "comment", new_question_response_path(@question) %></div>
+</div>
+<div class="answer">
+  <div class="answer-header">
+    <h3><%= question.answers.size%> Answers</h3>
+  </div>
+  <% @question.sorted_answers.each do |answer| %>
+    <div class="content-row">
+      <%= render answer %>
+    </div>
+  <% end %>
+  <div class="content-row">
+  <%= render "answers/answer_form.html", :question => @question %><br>
+  </div>
+</div>
