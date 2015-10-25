@@ -1,6 +1,8 @@
-<h4>All Tags:</h4>
-<ol>
-    <% @tags.each do |tag| %>
-        <%= link_to tag.name, question_path(tag) %>
-    <% end %>
-</ol>
+<div class='ques-answer cf'>
+  <h3>All Tags:</h3>
+  <ul>
+      <% @tags.each do |tag| %>
+          <li class="btn"><%= link_to tag.name, tag_path(tag) %></li>
+      <% end %>
+  </ul>
+</div>
