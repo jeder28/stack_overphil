@@ -28,6 +28,13 @@
       </div>
     </nav>
     <div class="content">
+        <div class="error-box">
+          <% flash.each do |key, value|  %>
+            <div class="error-messages-<%= key %>">
+              <div class="alert alert-<%= key %>"><%= value %></div>
+            </div>
+          <% end %>
+        </div>
       <header>
         <%= link_to image_tag("stackoverphil-logo.png", :border => 0), root_path %>
         <div class="btns">
