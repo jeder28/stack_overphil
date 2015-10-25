@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   post '/best' => 'answers#best'
   root 'welcome#index'
   post '/vote' => 'votes#create'
-  get '/:order_by', to: 'welcome#index'
   get '/search' => 'welcome#search'
+  get '/:order_by' => 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
