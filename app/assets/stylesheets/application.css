@@ -60,6 +60,11 @@ header {
   padding: 50px;
 }
 
+.side-btns {
+  float: right;
+  padding: 20px;
+}
+
 .btn {
   float:left;
   background-color: gray;
@@ -87,6 +92,40 @@ header {
 
 .ques-list {
   clear: both;
+}
+
+.ques-item {
+  display: block;
+  margin: 0 auto;
+  height: 60px;
+  border-bottom: 1px solid #BFBFBF;
+  width: 90%;
+}
+
+.ques-item h3 {
+  display: inline-block;
+}
+
+.ques-deets {
+  padding: 1em 0em 0em 0em;
+}
+
+.ques-deet{
+  float: left;
+  text-align: center;
+  margin-right: 1em;
+}
+
+.ques-deet span {
+  font-size: .75em;
+}
+
+h3 a {
+  color: #CF5300;
+}
+
+h3 a:hover {
+  color: #FF7519;
 }
 
 footer, .push {
