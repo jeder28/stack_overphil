@@ -1,13 +1,27 @@
-<h3><%= @user.username %> profile</h3>
-<p>Past Questions:</p>
-  <ul>
+<h1><%= @user.username %>'s profile</h1>
+<div class="ques-answer">
+<h3>Questions You've Asked:</h3>
+  <% if @user.questions.empty? %>
+    <p>You have asked 0 questions. </p>
+    <p>Perhaps there's something you'd like to <%= link_to "ask", new_question_path %>.</p>
+  <% else %>
+  <ol>
     <% @user.questions.each do |q| %>
       <li><%= q.title %></li>
     <% end %>
-  </ul>
-<p>Answers You've Given:</p>
-  <ul>
-    <% @user.answers.each do |a| %>
-      <li>Answer: <%= a.content %> | Question: <%= a.question %>, by: <%= a.question.asker %></li>
+  </ol>
+  <% end %>
+</div>
+<div class="ques-answer">
+  <h3>Answers You've Given:</h3>
+  <% if @user.answers.empty? %>
+    <p>You have answered 0 questions.</p>
+    <p>Don't be shy, we want your insight! <%= link_to "Answer", root_path %> some questions!</p>
+  <% else %>
+      <ol>
+        <% @user.answers.each do |a| %>
+          <li>Answer: <%= a.content %> | Question: <%= a.question %>, by: <%= a.question.asker %></li>
+        <% end %>
+      </ol>
     <% end %>
-  </ul>
+</div>
