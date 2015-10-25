@@ -1,11 +1,16 @@
 <%= form_for @question do |f| %>
   Question: <%= f.text_field :title %><br />
   Description: <%= f.text_area :content %><br />
-  <%= f.submit %>
+  <%= f.fields_for @tag do |o| %>
+  <%= o.label :tags %>
+  <%= o.text_field :name, placeholder: "seperated by commas"  %>
+  <%= f.submit "Submit" %>
 <% end %>
+<% end %>
+
 
 <% if flash[:notice] %>
   <p class='errors'>
   Errors:
   <%= flash[:notice] %></p>
-  <% end %>
+<% end %>
