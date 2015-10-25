@@ -1,0 +1,7 @@
+<h4>Posts tagged with <%=@tag.name%>:</h4>
+
+<ul>
+<% @tag.questions.each do |question| %>
+    <%= render partial: "questions/question", locals: {question: question} %>
+<% end %>
+</ul>
