@@ -1,21 +1,23 @@
-<h1>Register</h1>
-<%= form_for @user do |f| %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.submit %>
-<% end %>
-
-<% if @user.errors.any?  %>
-<ul>
-  <% @user.errors.full_messages.each do |msg| %>
-  <li><%= msg %></li>
+<div class="ques-answer cf">
+  <h3>Register</h3>
+  <%= form_for @user do |f| %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    <br><br>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <br><br>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <br><br>
+    <div class="submit-btn"><%= f.submit %></div>
   <% end %>
-</ul>
-<% end %>
+
+  <% if @user.errors.any?  %>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>
