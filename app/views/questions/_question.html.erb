@@ -3,15 +3,16 @@
   <div class="content-row">
     <% if logged_in? %>
       <% if @question.vote_on_this?(current_user.id)  %>
-        <div class="left-deets"><%= render "votes/vote_form", :object => @question, :vote => @vote %></div>
+        <div class="vote-deets"><%= render "votes/vote_form", :object => @question, :vote => @vote %></div>
       <% end %>
     <% end %>
     <div class="left-deets">
-      <p><%= question.content%></p>
+      <div class="ques-content"><%= question.content%></div>
     </div>
     <div class="right-deets">
       <p>Posted: <%= time_ago_in_words(question.created_at) %></p>
       <p>Views: <%= question.view_count %></p>
+      <p>Votes: <%= question.vote_count %></p>
     </div>
   </div>
   <div class="content-row">
