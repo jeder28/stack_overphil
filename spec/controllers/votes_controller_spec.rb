@@ -44,54 +44,7 @@ describe VotesController do
     end
 
     #COUNT TOTALS
-    it "triggers recalculation of question vote total, plus one" do
-      expect do
-        post :create, :vote => question_vote_plus_one
-      end.to change{Question.last.vote_count}.by(1)
-    end
-
-    it "triggers recalculation of question vote total, minus one" do
-      expect do
-        post :create, :vote => question_vote_minus_one
-      end.to change{Question.last.vote_count}.by(-1)
-    end
-
-    # THE TESTS BELOW THIS LINE DO NOT WORK 
-    xit "triggers recalculation of answer vote total, plus one" do
-      expect do
-        post :create, :vote => answer_vote_plus_one
-      end.to change{Answer.last.vote_count}.by(1)
-    end
-
-    xit "triggers recalculation of answer vote total, minus one" do
-      expect do
-        post :create, :vote => answer_vote_minus_one
-      end.to change{Answer.last.vote_count}.by(-1)
-    end
-
-    xit "triggers recalculation of question response vote total, plus one" do
-      expect do
-        post :create, :vote => question_response_vote_plus_one
-      end.to change{Response.last.vote_count}.by(1)
-    end
-
-    xit "triggers recalculation of question response vote total, minus one" do
-      expect do
-        post :create, :vote => question_response_vote_minus_one
-      end.to change{Response.last.vote_count}.by(-1)
-    end
-
-    xit "triggers recalculation of answer response vote total, plus one" do
-      expect do
-        post :create, :vote => answer_response_vote_plus_one
-      end.to change{Response.last.vote_count}.by(1)
-    end
-
-    xit "triggers recalculation of answer response vote total, minus one" do
-      expect do
-        post :create, :vote => answer_response_vote_minus_one
-      end.to change{Response.last.vote_count}.by(-1)
-    end
+    
 
   end
 
