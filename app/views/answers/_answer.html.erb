@@ -1,11 +1,11 @@
 <div class="ques-answer">
   <div class="content-row">
     <% if answer.is_best_answer?(answer.question) %>
-        <div class="left-deets"><%= render "answers/best_answer_identifier" %></div>
+        <div class="vote-deets"><%= render "answers/best_answer_identifier" %></div>
     <% end %>
     <% if logged_in? %>
       <% if answer.vote_on_this?(current_user.id)  %>
-        <div class="left-deets"><%= render "votes/vote_form", :object => answer, :vote => @vote %></div>
+        <div class="vote-deets"><%= render "votes/vote_form", :object => answer, :vote => @vote %></div>
       <% end %>
       <% if answer.best_answerable?(answer.question, current_user.id) %>
         <%= render "answers/best_answer_form", :answer => answer %><br>
