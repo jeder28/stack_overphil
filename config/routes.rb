@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :votes, only: [:new, :create]
     end
     resources :votes, only: [:new, :create]
+    resources :tags, only: [:index, :show]
   end
 
   resources :answers, only: [:show] do
@@ -21,8 +22,9 @@ Rails.application.routes.draw do
   post '/best' => 'answers#best'
   root 'welcome#index'
   post '/vote' => 'votes#create'
-  get '/:order_by', to: 'welcome#index'
-  
+  get '/search' => 'welcome#search'
+  get '/:order_by' => 'welcome#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

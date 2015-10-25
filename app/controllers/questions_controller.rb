@@ -5,6 +5,7 @@ class QuestionsController < ApplicationController
   def new
     if logged_in?
       @question = Question.new
+      @tag = Tag.new
     else
       redirect_to root_path
     end
@@ -16,6 +17,9 @@ class QuestionsController < ApplicationController
       @question.asker_id = current_user.id
       if @question.save
         redirect_to question_path(@question)
+        if tag_params != nil
+          Tag.make_tags(tag_params[:name], question)
+        end
       else
         flash[:notice] = @question.errors.full_messages.join(", ")
         render :new
@@ -31,4 +35,11 @@ class QuestionsController < ApplicationController
     @answer = Answer.new
     @vote = Vote.new
   end
+
+  private 
+
+  def tag_params
+   params.require(:question).require(:tag).permit(:name)
+ end
+
 end

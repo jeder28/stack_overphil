@@ -10,4 +10,14 @@ class WelcomeController < ApplicationController
       @questions = Question.all
     end
   end
+
+  def search
+    search_terms = params[:terms].downcase.split(" ")
+    @matches = []
+    search_terms.each do |term|
+      @matches += Question.all.select { |question| question.title.downcase.include?(term) }
+    end
+    @matches = @matches.uniq
+    render 'search'
+  end
 end

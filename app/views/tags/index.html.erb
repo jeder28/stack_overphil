@@ -1,0 +1,6 @@
+<h4>Tags</h4>
+<ol>
+    <% @tags.each do |tag| %>
+        <%= link_to tag.name, question_tags_path(tag), :class => "user-show-link"%>
+    <% end %>
+</ol>

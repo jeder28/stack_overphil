@@ -41,6 +41,7 @@ group :development, :test do
   gem 'simplecov', :require => false, :group => :test
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'pry'
 end
 
 group :development do

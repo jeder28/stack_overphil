@@ -1,0 +1,5 @@
+<% @matches.each do |q| %>
+<div><%= q.vote_count %> votes</div><div><%= q.answers.size%> answers</div><div><%= q.view_count %> views</div>
+<%= link_to q.title, question_path(q) %>
+<% end %>
+
