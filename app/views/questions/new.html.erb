@@ -1,11 +1,10 @@
 <div class="ques-answer">
   <h3>Ask a Question:</h3>
   <%= form_for @question do |f| %>
-    <div class="title-conent">Title: <%= f.text_field :title %></div>
+    Title: <%= f.text_field :title %>
     <div class="body-content"><%= f.text_area :content %></div>
     <%= f.fields_for @tag do |o| %>
-      <%= o.label :tags %>
-      <%= o.text_field :name, placeholder: "seperated by commas"  %>
+      Tags:<%= o.text_field :name, placeholder: "seperated by commas"  %>
       <div class="submit-btn"><%= f.submit "Submit" %></div>
     <% end %>
   <% end %>
