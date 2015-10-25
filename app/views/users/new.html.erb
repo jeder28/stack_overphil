@@ -1,7 +1,7 @@
 <div class="ques-answer cf">
   <h3>Register</h3>
   <% if @user.errors.any?  %>
-  <div class="error-messages-alert">
+  <div class="error-messages">
     <h4 class="alert-alert">Warning:</h4>
     <ul>
       <% @user.errors.full_messages.each do |msg| %>
