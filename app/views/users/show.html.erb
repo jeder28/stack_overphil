@@ -1,26 +1,26 @@
 <h1><%= @user.username %>'s profile</h1>
-<div class="ques-answer">
-<h3>Questions You've Asked:</h3>
+<div class="ques-answer cf">
+<h3><%= @user.username %>'s Questions:</h3>
   <% if @user.questions.empty? %>
     <p>You have asked 0 questions. </p>
     <p>Perhaps there's something you'd like to <%= link_to "ask", new_question_path %>.</p>
   <% else %>
   <ol>
     <% @user.questions.each do |q| %>
-      <li><%= q.title %></li>
+      <li><%= link_to q.title, question_path(q) %> | Answers: <%= q.answers.count %> | Votes: <%= q.vote_count %></li>
     <% end %>
   </ol>
   <% end %>
 </div>
-<div class="ques-answer">
-  <h3>Answers You've Given:</h3>
+<div class="ques-answer cf">
+  <h3><%= @user.username %>'s Answers:</h3>
   <% if @user.answers.empty? %>
     <p>You have answered 0 questions.</p>
     <p>Don't be shy, we want your insight! <%= link_to "Answer", root_path %> some questions!</p>
   <% else %>
       <ol>
         <% @user.answers.each do |a| %>
-          <li>Answer: <%= a.content %> | Question: <%= a.question %>, by: <%= a.question.asker %></li>
+          <li>Answer: <%= link_to a.content, question_path(a.question_id) %> | Votes: <%= a.vote_count %> | Question: <%= a.question.title %>, by: <%= a.question.asker.username %></li>
         <% end %>
       </ol>
     <% end %>
