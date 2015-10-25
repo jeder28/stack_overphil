@@ -1,5 +1,16 @@
+<div class="ques-list">
+  <div class="ques-item">
+    <h1><%= @matches.count %> Matches</h1>
+  </div>
 <% @matches.each do |q| %>
-<div><%= q.vote_count %> votes</div><div><%= q.answers.size%> answers</div><div><%= q.view_count %> views</div>
-<%= link_to q.title, question_path(q) %>
+  <div class="ques-item">
+    <div class="ques-deets">
+      <div class="ques-deet"><%= q.vote_count %> <br><span>votes</span></div>
+      <div class="ques-deet"><%= q.answers.size%> <br><span>answers</span></div>
+      <div class="ques-deet"><%= q.view_count %> <br><span>views</span></div>
+    </div>
+    <h3><%= link_to q.title, question_path(q) %></h3>
+  </div>
 <% end %>
+</div>
 

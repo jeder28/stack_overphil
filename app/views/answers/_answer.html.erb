@@ -4,18 +4,16 @@
         <div class="best-deets"><%= render "answers/best_answer_identifier" %></div>
     <% end %>
     <% if logged_in? %>
-      <% if answer.vote_on_this?(current_user.id)  %>
-        <div class="vote-deets"><%= render "votes/vote_form", :object => answer, :vote => @vote %></div>
-      <% else %>
-        <div class="vote-deets">
-          <div class="up"><%= image_tag("gray-arrow.png")%></div>
-          <div class="vote-num"><%= answer.vote_count %></div>
-          <div class="down"><%= image_tag("gray-arrow.png")%></div>
-        </div>
-      <% end %>
       <% if answer.best_answerable?(answer.question, current_user.id) %>
         <%= render "answers/best_answer_form", :answer => answer %><br>
       <% end %>
+      <% if answer.vote_on_this?(current_user.id)  %>
+        <div class="vote-deets"><%= render "votes/vote_form", :object => answer, :vote => @vote %></div>
+      <% else %>
+        <%= render :partial => "disabled_votes", locals: {object: @answer} %>
+      <% end %>
+      <% else %>
+        <%= render :partial => "disabled_votes", locals: {object: answer} %>
     <% end %>
     <div class="left-deets">
       <p><%= answer.content %></p>

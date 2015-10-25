@@ -5,12 +5,10 @@
       <% if @question.vote_on_this?(current_user.id)  %>
         <div class="vote-deets"><%= render "votes/vote_form", :object => @question, :vote => @vote %></div>
       <% else %>
-        <div class="vote-deets">
-          <div class="up"><%= image_tag("gray-arrow.png")%></div>
-          <div class="vote-num"><%= question.vote_count %></div>
-          <div class="down"><%= image_tag("gray-arrow.png")%></div>
-        </div>
+        <%= render :partial => "disabled_votes", locals: {object: @question} %>
       <% end %>
+      <% else %>
+        <%= render :partial => "disabled_votes", locals: {object: @question} %>
     <% end %>
     <div class="left-deets">
       <div class="ques-content"><%= question.content%></div>
