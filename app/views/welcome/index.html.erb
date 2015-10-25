@@ -3,10 +3,10 @@
     <%= link_to "Sort by highest votes", '/votes' %>
   </div>
   <div class="btn">
-  <%= link_to "Sort by trendiness", '/trendiness' %>
+    <%= link_to "Sort by trendiness", '/trendiness' %>
   </div>
   <div class="btn">
-  <%= link_to "Sort by most recent", '/recentness' %>
+    <%= link_to "Sort by most recent", '/recentness' %>
   </div>
 </div>
 
@@ -20,5 +20,6 @@
     </div>
     <h3><%= link_to q.title, question_path(q) %></h3>
   </div>
+  <% end %>
 </div>
 
