@@ -82,6 +82,11 @@ header {
 
 #main {
   clear: both;
+  background-color: white;
+}
+
+.ques-list {
+  clear: both;
 }
 
 footer, .push {
