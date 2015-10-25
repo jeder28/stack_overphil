@@ -4,7 +4,7 @@ users = User.all
 
 #Make Questions:
 users.each do |user|
-  2.times { user.questions.create!( title: Faker::Book.title, content: Faker::Lorem.sentence ) }
+  2.times { user.questions.create!( title: Faker::Book.title, content: Faker::Lorem.paragraph(2) ) }
 end
 
 #Make Answers
