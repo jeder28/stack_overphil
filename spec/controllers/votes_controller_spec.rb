@@ -3,8 +3,6 @@ require 'rails_helper'
 describe VotesController do
 
   let(:user) {FactoryGirl.create(:user)}
-  # let(:sample_question) {FactoryGirl.create(:question)}
-  # let(:sample_answer) {FactoryGirl.create(:answer)}
   let(:question_vote_plus_one) { FactoryGirl.build(:question_vote_plus_one).attributes }
   let(:question_vote_minus_one) { FactoryGirl.build(:question_vote_minus_one).attributes }
   let(:answer_vote_plus_one) { FactoryGirl.build(:answer_vote_plus_one).attributes }
@@ -42,10 +40,6 @@ describe VotesController do
         post :create, :vote => answer_response_vote_plus_one
       end.to change{Vote.count}.by(1)
     end
-
-    #COUNT TOTALS
-    
-
   end
 
 end
