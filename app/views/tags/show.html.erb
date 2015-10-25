@@ -1,0 +1,5 @@
+<ul>
+<% @tag.questions.each do |question| %>
+    <%= render partial: "questions/question", locals: {question: question} %>
+<% end %>
+</ul>
