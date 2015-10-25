@@ -35,11 +35,12 @@ nav {
 }
 
 nav ul {
+  float: right;
   list-style-type: none;
 }
 
 nav li {
-  float: right;
+  float: left;
   margin-left: 2em;
 }
 
