@@ -1,7 +1,7 @@
 class ResponsesController < ApplicationController
 
   def new
-    if logged_in?
+    if current_user != nil
       @parent = parent_object
       @parent_name = @parent.class.name.downcase.pluralize
       @response = Response.new
