@@ -1,16 +1,20 @@
-<%= form_for @question do |f| %>
-  Question: <%= f.text_field :title %><br />
-  Description: <%= f.text_area :content %><br />
-  <%= f.fields_for @tag do |o| %>
-  <%= o.label :tags %>
-  <%= o.text_field :name, placeholder: "seperated by commas"  %>
-  <%= f.submit "Submit" %>
-<% end %>
-<% end %>
+<div class="ques-answer">
+  <h3>Ask a Question:</h3>
+  <%= form_for @question do |f| %>
+    <div class="title-conent">Title: <%= f.text_field :title %></div>
+    <div class="body-content"><%= f.text_area :content %></div>
+    <%= f.fields_for @tag do |o| %>
+      <%= o.label :tags %>
+      <%= o.text_field :name, placeholder: "seperated by commas"  %>
+      <div class="submit-btn"><%= f.submit "Submit" %></div>
+    <% end %>
+  <% end %>
 
 
-<% if flash[:notice] %>
-  <p class='errors'>
-  Errors:
-  <%= flash[:notice] %></p>
-<% end %>
+  <% if flash[:notice] %>
+    <p class='errors'>
+    Errors:
+    <%= flash[:notice] %></p>
+  <% end %>
+</div>
+
