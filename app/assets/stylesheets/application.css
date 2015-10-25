@@ -281,6 +281,15 @@ td {
   background-color: #FEFEFE;;
 }
 
+#question_tag_name {
+  width: 50%;
+  height: 2em;
+  font-size: 1em;
+  margin-bottom: .5em;
+  border: 1px solid #E1E1E1;
+  background-color: #FEFEFE;;
+}
+
 #new_question {
   margin-top: 1em;
 }
