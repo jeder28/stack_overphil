@@ -88,7 +88,6 @@ header {
 
 #main {
   clear: both;
-  background-color: white;
 }
 
 .ques-list {
@@ -142,4 +141,112 @@ footer {
 #copyright {
   padding-top: 15px;
   text-align: center;
+}
+
+/* Question Show Page */
+
+.content-row {
+  clear:both;
+  display: block;
+}
+
+.comment {
+  font-size: .75em;
+  padding: .5% 0%;
+}
+
+.left-deets {
+  float: left;
+  margin: 2% 2% 0% 0%;
+}
+
+.right-deets {
+  float: right;
+  background-color: #FCFCFC;
+  color: #381C08;
+  padding: 1em;
+  margin-bottom: 2%;
+  border: 1px solid #EAEAEA;
+}
+
+.label {
+  float:left;
+  background-color: #DADADA;
+  padding: .5em;
+  margin-left: .25em;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  color: #57A5C4;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #E86C19;
+}
+
+.divider {
+  clear: both;
+}
+.answers {
+  margin-top: 15px;
+}
+
+.ques-answer {
+  min-height: 90px;
+  background-color: white;
+  box-shadow: 0px 5px 15px 0px #C4C4C4;
+  padding: 2em;
+  margin-bottom: .5em;
+}
+
+td {
+  text-align: center;
+}
+
+.up {
+    -ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+}
+
+.vote-table {
+  position: relative;
+  top: -15px;
+}
+
+.answer-header {
+  margin: 2% 0% 0% 2%;
+  display: inline-block;
+  padding: 1% 1% .75% 1%;
+  background-color: #FF9800;
+  box-shadow: inset 0px -5px 2px -2px #E28801;
+}
+
+.submit-btn input[type=submit] {
+  height: 3em;
+  padding: 0% 1% 0% 1%;
+  border-radius: .5em;
+  background-color: #158FE4;
+  font-size: .75em;
+  color: white;
+  border: 1px solid #0F6EB1;
+  box-shadow: inset 0px 2px 3px 0px #67BCF7;
+}
+
+.submit-btn input[type=submit]:hover {
+  background-color: #0F6EB1;
+}
+
+.answer-content textarea {
+  width: 100%;
+  height: 10em;
+  font-size: 1em;
+  resize: none;
+  margin-bottom: .5em;
 }
