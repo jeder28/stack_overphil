@@ -5,7 +5,6 @@ class QuestionsController < ApplicationController
   def new
     if logged_in?
       @question = Question.new
-      @tag = Tag.new
     else
       redirect_to login_path
     end
@@ -34,6 +33,7 @@ class QuestionsController < ApplicationController
     @question.update_attributes(view_count: (@question.view_count + 1))
     @answer = Answer.new
     @vote = Vote.new
+    @tag = Tag.new
   end
 
   private
