@@ -1,11 +1,17 @@
-<div class="ques-answer">
+<div class="ques-answer cf">
   <div class="content-row">
     <% if answer.is_best_answer?(answer.question) %>
-        <div class="vote-deets"><%= render "answers/best_answer_identifier" %></div>
+        <div class="best-deets"><%= render "answers/best_answer_identifier" %></div>
     <% end %>
     <% if logged_in? %>
       <% if answer.vote_on_this?(current_user.id)  %>
         <div class="vote-deets"><%= render "votes/vote_form", :object => answer, :vote => @vote %></div>
+      <% else %>
+        <div class="vote-deets">
+          <div class="up"><%= image_tag("gray-arrow.png")%></div>
+          <div class="vote-num"><%= answer.vote_count %></div>
+          <div class="down"><%= image_tag("gray-arrow.png")%></div>
+        </div>
       <% end %>
       <% if answer.best_answerable?(answer.question, current_user.id) %>
         <%= render "answers/best_answer_form", :answer => answer %><br>

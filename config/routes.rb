@@ -5,8 +5,8 @@ Rails.application.routes.draw do
       resources :votes, only: [:new, :create]
     end
     resources :votes, only: [:new, :create]
-    resources :tags, only: [:index, :show]
   end
+  resources :tags, only: [:index, :show]
 
   resources :answers, only: [:show] do
     resources :responses, only: [:index, :new, :create, :show]

@@ -1,9 +1,9 @@
 <div class="answer-header">
     <h3>Answer:</h3>
   </div>
-<div class="ques-answer">
+<div class="ques-answer cf">
   <%= form_for @answer, :url => "/questions/#{question.id}/answers" do |f| %>
-    <div class="answer-content"><%= f.text_area :content %></div>
+    <div class="body-content"><%= f.text_area :content %></div>
     <div class="submit-btn"><%= f.submit "Post your Answer" %></div>
   <% end %>
 </div>

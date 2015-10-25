@@ -1,9 +1,15 @@
-<div class="ques-answer">
+<div class="ques-answer cf">
   <h2><%= question.title%></h2>
   <div class="content-row">
     <% if logged_in? %>
       <% if @question.vote_on_this?(current_user.id)  %>
         <div class="vote-deets"><%= render "votes/vote_form", :object => @question, :vote => @vote %></div>
+      <% else %>
+        <div class="vote-deets">
+          <div class="up"><%= image_tag("gray-arrow.png")%></div>
+          <div class="vote-num"><%= question.vote_count %></div>
+          <div class="down"><%= image_tag("gray-arrow.png")%></div>
+        </div>
       <% end %>
     <% end %>
     <div class="left-deets">

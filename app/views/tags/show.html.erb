@@ -1,7 +1,10 @@
-<h4>Posts tagged with <%=@tag.name%>:</h4>
+<div class='ques-answer cf'>
+<h4>Questions tagged with <%=@tag.name%>:</h4>
 
 <ul>
 <% @tag.questions.each do |question| %>
-    <%= render partial: "questions/question", locals: {question: question} %>
+    <div class="btn"><%= link_to question.title, question_path(question) %></div>
 <% end %>
 </ul>
+
+</div>
