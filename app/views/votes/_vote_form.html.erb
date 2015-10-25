@@ -1,5 +1,5 @@
-<p>Vote on this <%= object.class.to_s.downcase %>:</p>
-<table>
+<!-- <p>Vote on this <%= object.class.to_s.downcase %>:</p> -->
+<table class="vote-table">
   <tr>
     <td>
       <%= form_tag('/vote', :method=>'post') do %>
@@ -7,16 +7,21 @@
         <%= hidden_field_tag "vote[votable_id]", object.id %>
         <%= hidden_field_tag "vote[votable_type]", "#{object.class}" %>
         <%= hidden_field_tag "vote[voter_id]", current_user.id %>
-        <%= submit_tag "+1" %>
+        <div class="up"><%= image_submit_tag("orange-arrow.png") %></div>
       <% end %>
     </td>
+  </tr>
+  <tr>
+    <td><%= object.vote_count %></td>
+  </tr>
+  <tr>
     <td>
       <%= form_tag('/vote', :method=>'post') do %>
         <%= hidden_field_tag "vote[value]", -1 %>
         <%= hidden_field_tag "vote[votable_id]", object.id %>
         <%= hidden_field_tag "vote[votable_type]", "#{object.class}" %>
         <%= hidden_field_tag "vote[voter_id]", current_user.id %>
-        <%= submit_tag "-1" %>
+        <div class="down"><%= image_submit_tag("orange-arrow.png") %></div>
       <% end %>
     </td>
   </tr>
