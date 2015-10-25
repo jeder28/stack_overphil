@@ -78,7 +78,12 @@ header {
 }
 
 .btn:hover {
+  color: white;
   background-color: #E86C19;
+}
+
+.btn:hover a {
+  color:white;
 }
 
 .content {
@@ -155,7 +160,14 @@ footer {
   padding: .5% 0%;
 }
 
+.vote-deets {
+  float: left;
+  width: 5%;
+  margin: 2% 2% 0% 0%;
+}
+
 .left-deets {
+  width: 75%;
   float: left;
   margin: 2% 2% 0% 0%;
 }
@@ -249,4 +261,8 @@ td {
   font-size: 1em;
   resize: none;
   margin-bottom: .5em;
+}
+
+.ques-content {
+  width: 75%;
 }
