@@ -18,7 +18,7 @@ class QuestionsController < ApplicationController
       if @question.save
         redirect_to question_path(@question)
         if tag_params != nil
-          Tag.make_tags(tag_params[:name], question)
+          Tag.make_tags(tag_params[:name], @question)
         end
       else
         flash[:notice] = @question.errors.full_messages.join(", ")
