@@ -18,12 +18,19 @@ describe 'Log in Process' do
       end
   end
 
-describe "when user is logged in" do
-    it 'should replace register link with logout' do
-    log_in
-      expect(page).to have_content('Ask Question')
-      expect(page).to have_content('Tags')
-      expect(page).to have_content('logout')
+  describe "when user is logged in" do
+    pending 'should replace register link with logout' do
+        log_in
+        expect(page).to have_content('Ask Question')
+        expect(page).to have_content('Tags')
+        expect(page).to have_content('logout')
     end
+
+    pending "should log me out" do
+      log_in
+      click_link 'logout'
+      expect(page).to have_content('register')
+      expect(page).to have_content('login')
   end
+end
 end
