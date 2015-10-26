@@ -92,4 +92,8 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+  config.expect_with :rspec do |c|
+    c.syntax = [:should, :expect]
+  end
 end
