@@ -23,5 +23,10 @@ describe TagsController do
       get :show, {id: 2}
       expect(response.status).to eq(200)
     end
+
+    it "renders show template" do
+      get :show, {id: 2}
+      expect(response).to render_template("show")
+    end
   end
 end
