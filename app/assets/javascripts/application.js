@@ -25,7 +25,7 @@ $(document).ready(function() {
     }).then(function(response){
       $('.ques-list').replaceWith(response);
     }).fail(function(){alert('Oops, something went wrong. Please contact the system administrator.')});
-  })
+  });
 
     $('.side-btns').on('click', '[btn-id="trendy-sort"]', function(e){
     e.preventDefault();
@@ -37,7 +37,7 @@ $(document).ready(function() {
     }).then(function(response){
       $('.ques-list').replaceWith(response);
     }).fail(function(){alert('Oops, something went wrong. Please contact the system administrator.')});
-  })
+  });
 
     $('.side-btns').on('click', '[btn-id="recent-sort"]', function(e){
     e.preventDefault();
@@ -49,7 +49,7 @@ $(document).ready(function() {
     }).then(function(response){
       $('.ques-list').replaceWith(response);
     }).fail(function(){alert('Oops, something went wrong. Please contact the system administrator.')});
-  })
+  });
 
     $('.vote-table').on('submit', '.upvote', function(e){
       e.preventDefault();
@@ -64,7 +64,7 @@ $(document).ready(function() {
       }).done(function(response){
         voteTableBody.replaceWith(response);
       }).fail(function(){alert('Oops, something went wrong. Please contact the system administrator.')});
-    })
+    });
 
     $('.vote-table').on('submit', '.downvote', function(e){
       e.preventDefault();
@@ -78,6 +78,22 @@ $(document).ready(function() {
         data: data
       }).done(function(response){
         voteTableBody.replaceWith(response);
+      }).fail(function(){alert('Oops, something went wrong. Please contact the system administrator.')});
+    });
+
+    $('.ques-answer').on('submit', '#new_answer', function(e){
+      e.preventDefault();
+      thisForm = $(this).parent().parent();
+      var type = $(this).attr('method');
+      var url = $(this).attr('action');
+      var data = $(this).serialize();
+      $.ajax({
+        type: type,
+        url: url,
+        data: data
+      }).done(function(response){
+        thisForm.prepend("<div class='content-row'>" + response + "</div>");
+        thisForm.find('.body-content').reset();
       }).fail(function(){alert('Oops, something went wrong. Please contact the system administrator.')});
     })
 
