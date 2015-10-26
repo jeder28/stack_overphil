@@ -20,18 +20,18 @@ describe TagsController do
 
   describe "#show" do
     it "has a 200 status code" do
-      get :show, {id: 2}
+      get :show, {id: 1}
       expect(response.status).to eq(200)
     end
 
     it "renders show template" do
-      get :show, {id: 2}
+      get :show, {id: 1}
       expect(response).to render_template("show")
     end
 
     it "assigns tags correctly" do
-      get :show, {id: 2}
-      expect(assigns(:tag)).to eq(Tag.find(2))
+      get :show, {id: 1}
+      expect(assigns(:tag)).to eq(Tag.find(1))
     end
   end
 end
