@@ -13,3 +13,41 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function() {
+  $('.side-btns').on('click', '[btn-id="vote-sort"]', function(e){
+    e.preventDefault();
+    var $btnPath = $(this).find('a');
+    var url = $btnPath.attr('href');
+    $.ajax({
+      type: 'GET',
+      url: url
+    }).then(function(response){
+      $('.ques-list').replaceWith(response);
+    }).fail(function(){alert('Oops, something went wrong. Please contact the system administrator.')});
+  })
+
+    $('.side-btns').on('click', '[btn-id="trendy-sort"]', function(e){
+    e.preventDefault();
+    var $btnPath = $(this).find('a');
+    var url = $btnPath.attr('href');
+    $.ajax({
+      type: 'GET',
+      url: url
+    }).then(function(response){
+      $('.ques-list').replaceWith(response);
+    }).fail(function(){alert('Oops, something went wrong. Please contact the system administrator.')});
+  })
+
+    $('.side-btns').on('click', '[btn-id="recent-sort"]', function(e){
+    e.preventDefault();
+    var $btnPath = $(this).find('a');
+    var url = $btnPath.attr('href');
+    $.ajax({
+      type: 'GET',
+      url: url
+    }).then(function(response){
+      $('.ques-list').replaceWith(response);
+    }).fail(function(){alert('Oops, something went wrong. Please contact the system administrator.')});
+  })
+})
