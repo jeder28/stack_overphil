@@ -24,4 +24,15 @@ class Answer < ActiveRecord::Base
   def best_answerable?(question, current_user_id)
     question.best_answer_id == nil && question.asker_id == current_user_id && self.answerer.id != current_user_id
   end
+
+  def sorted_responses
+    response_arr = self.responses.dup
+    sort_array_by_points(response_arr)
+  end
+
+  private
+
+  def sort_array_by_points(response_arr)
+    response_arr.sort_by{ |response| response.vote_count }.reverse
+  end
 end

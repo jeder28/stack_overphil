@@ -24,6 +24,11 @@ class Question < ActiveRecord::Base
     end
   end
 
+  def sorted_responses
+    response_arr = self.responses.dup
+    sort_array_by_points(response_arr)
+  end
+
   def self.sort_by_votes
     Question.all.order('vote_count DESC')
   end
