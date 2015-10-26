@@ -10,7 +10,7 @@
       <% if answer.vote_on_this?(current_user.id)  %>
         <div class="vote-deets"><%= render "votes/vote_form", :object => answer, :vote => @vote %></div>
       <% else %>
-        <%= render :partial => "questions/disabled_votes", locals: {object: @answer} %>
+        <%= render :partial => "questions/disabled_votes", locals: {object: answer} %>
       <% end %>
       <% else %>
         <%= render :partial => "questions/disabled_votes", locals: {object: answer} %>
