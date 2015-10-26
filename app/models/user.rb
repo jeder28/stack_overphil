@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   has_many :responses, foreign_key: :responder_id
 
   has_secure_password
-  validates :username, :email, uniqueness: true
   validates :username, :email, presence: true
   validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 end
