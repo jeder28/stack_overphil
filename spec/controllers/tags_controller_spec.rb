@@ -23,11 +23,6 @@ describe TagsController do
       @tag = create(:tag)
       @tag.questions << create(:question)
     end
-    
-    it "renders show template" do
-      get :show, {id: 2}
-      expect(response).to render_template("show")
-    end
 
     it "assigns tags correctly" do
       get :show, {id: 5}
