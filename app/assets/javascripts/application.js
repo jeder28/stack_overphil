@@ -97,4 +97,32 @@ $(document).ready(function() {
         thisForm.prepend("<div class='content-row'>" + response + "</div>");
       }).fail(function(){alert('Oops, something went wrong. Please contact the system administrator.')});
     });
+
+    $('.content').on('click', '.comment-link', function(e){
+      e.preventDefault();
+      box = $(this).parent();
+      var url = $(this).find('a').attr('href');
+      $.ajax({
+        type: 'get',
+        url: url
+      }).done(function(response){
+        box.append(response);
+      });
+    });
+
+    $('.content').on('submit', '#new_response', function(e){
+      e.preventDefault();
+      box = $(this).parent().parent();
+      type = $(this).attr('method');
+      url = $(this).attr('action');
+      data = $(this).serialize();
+      $.ajax({
+        type: type,
+        url: url,
+        data: data
+      }).done(function(response){
+        $(box.find('.content-row')[box.find('.content-row').length-1]).append(response)
+        box.find('.ques-answer').hide();
+      })
+    })
 });
