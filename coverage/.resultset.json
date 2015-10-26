@@ -58,7 +58,7 @@
         null,
         null,
         1,
-        1,
+        2,
         null,
         null,
         1,
@@ -70,7 +70,7 @@
       "/Users/so10c/Desktop/stack_overphil/app/controllers/sessions_controller.rb": [
         1,
         1,
-        0,
+        1,
         null,
         null,
         1,
@@ -286,6 +286,6 @@
         null
       ]
     },
-    "timestamp": 1445817153
+    "timestamp": 1445819395
   }
 }

@@ -7,15 +7,23 @@ describe 'Log in Process' do
         within("#login") do
             fill_in 'Username', :with => user.username
             fill_in 'Password', :with => user.password
-            click_button 'Login'
+            click_button 'login'
         end
     }
     describe "If user is not logged in" do
-        it 'should have a sign up link' do
+        it 'should have a register link' do
           visit root_path
           expect(page).to have_content('register')
           expect(page).to have_content('login')
       end
   end
-end
 
+describe "when user is logged in" do
+    it 'should replace register link with logout' do
+    log_in
+      expect(page).to have_content('Ask Question')
+      expect(page).to have_content('Tags')
+      expect(page).to have_content('logout')
+    end
+  end
+end
