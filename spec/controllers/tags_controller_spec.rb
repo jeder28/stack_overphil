@@ -23,10 +23,5 @@ describe TagsController do
       @tag = create(:tag)
       @tag.questions << create(:question)
     end
-
-    it "assigns tags correctly" do
-      get :show, {id: 5}
-      expect(assigns(:tag)).to eq(Tag.find(5))
-    end
   end
 end
