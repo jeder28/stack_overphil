@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe TagsController do
-      before(:all) do
+      before(:each) do
       @tag = create(:tag)
       @tag.questions << create(:question)
       end
