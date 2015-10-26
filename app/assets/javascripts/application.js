@@ -62,6 +62,7 @@ $(document).ready(function() {
         url: url,
         data: data
       }).done(function(response){
+        debugger
         voteTableBody.replaceWith(response);
       }).fail(function(){alert('Oops, something went wrong. Please contact the system administrator.')});
     })
