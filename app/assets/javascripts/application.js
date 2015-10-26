@@ -50,4 +50,35 @@ $(document).ready(function() {
       $('.ques-list').replaceWith(response);
     }).fail(function(){alert('Oops, something went wrong. Please contact the system administrator.')});
   })
+
+    $('.vote-table').on('submit', '.upvote', function(e){
+      e.preventDefault();
+      voteTableBody = $(this).parent().parent().parent();
+      var type = $(this).attr('method');
+      var url = $(this).attr('action');
+      var data = $(this).serialize();
+      $.ajax({
+        type: type,
+        url: url,
+        data: data
+      }).done(function(response){
+        voteTableBody.replaceWith(response);
+      }).fail(function(){alert('Oops, something went wrong. Please contact the system administrator.')});
+    })
+
+    $('.vote-table').on('submit', '.downvote', function(e){
+      e.preventDefault();
+      voteTableBody = $(this).parent().parent().parent();
+      var type = $(this).attr('method');
+      var url = $(this).attr('action');
+      var data = $(this).serialize();
+      $.ajax({
+        type: type,
+        url: url,
+        data: data
+      }).done(function(response){
+        voteTableBody.replaceWith(response);
+      }).fail(function(){alert('Oops, something went wrong. Please contact the system administrator.')});
+    })
+
 })
