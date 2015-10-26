@@ -5,10 +5,10 @@
       <% if @question.vote_on_this?(current_user.id)  %>
         <div class="vote-deets"><%= render "votes/vote_form", :object => @question, :vote => @vote %></div>
       <% else %>
-        <%= render :partial => "disabled_votes", locals: {object: @question} %>
+        <%= render :partial => "questions/disabled_votes", locals: {object: @question} %>
       <% end %>
       <% else %>
-        <%= render :partial => "disabled_votes", locals: {object: @question} %>
+        <%= render :partial => "questions/disabled_votes", locals: {object: @question} %>
     <% end %>
     <div class="left-deets">
       <div class="ques-content"><%= question.content%></div>
@@ -39,9 +39,11 @@
   <div class="comment-link"><%= link_to "comment", new_question_response_path(@question) %></div>
 </div>
 <div class="answer">
-  <div class="answer-header">
-    <h3><%= question.answers.size%> Answers</h3>
-  </div>
+  <% if !@question.answers.empty? %>
+    <div class="answer-header">
+      <h3><%= question.answers.size%> Answers</h3>
+    </div>
+  <% end %>
   <% @question.sorted_answers.each do |answer| %>
     <div class="content-row">
       <%= render answer %>
