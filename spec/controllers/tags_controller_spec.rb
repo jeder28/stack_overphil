@@ -19,6 +19,7 @@ describe TagsController do
   end
 
   describe "#show" do
+<<<<<<< HEAD
       before(:each) do
       @tag = create(:tag)
       @tag.questions << create(:question)
@@ -26,6 +27,10 @@ describe TagsController do
     
     it "renders show template" do
       get :show, tag.id
+=======
+    it "renders show template" do
+      get :show, {id: 2}
+>>>>>>> d10d5660403bbc8d30e220ccd18578eb410f1469
       expect(response).to render_template("show")
     end
 
