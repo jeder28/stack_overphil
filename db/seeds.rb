@@ -64,9 +64,18 @@ end
 #Make tags for Questions
 questions = Question.all
 
-questions.each do |q|
+questions.each do |question|
   num = rand(3) + 1
-  num.times { q.tags.create!(name: Faker::Commerce.department(1, true)) }
+
+  num.times do
+    new_tag = Tag.new(name: Faker::Commerce.department(1, true))
+    old_tag = Tag.find_by(name: new_tag.name)
+    if old_tag
+    question.tags.push(old_tag)
+    else
+      question.tags.create!(name: new_tag.name)
+    end
+  end
 end
 
 Question.all.each do |q|
