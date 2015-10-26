@@ -17,4 +17,11 @@ describe TagsController do
       expect(response).to render_template("index")
     end
   end
+
+  describe "#show" do
+    it "has a 200 status code" do
+      get :show, {id: 2}
+      expect(response.status).to eq(200)
+    end
+  end
 end
