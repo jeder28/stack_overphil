@@ -19,6 +19,11 @@ describe TagsController do
   end
 
   describe "#show" do
+      before(:each) do
+      @tag = create(:tag)
+      @tag.questions << create(:question)
+    end
+    
     it "renders show template" do
       get :show, {id: 2}
       expect(response).to render_template("show")
