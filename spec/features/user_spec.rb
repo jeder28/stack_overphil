@@ -57,4 +57,16 @@ describe "Register process" do
       expect(page).to have_content user_attr[:name]
     end
   end
+
+  describe "Invalid user" do
+    it "see if guest can register" do 
+      visit root_path
+      click_link 'register'
+      fill_in "Email", :with => nil
+      fill_in "Username", :with => nil
+      fill_in "Password", :with => nil
+      click_button("Create User")
+      expect(page).to have_content("Password can't be blank Username can't be blank Email can't be blank")
+    end
+  end
 end
