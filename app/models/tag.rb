@@ -3,7 +3,7 @@ class Tag < ActiveRecord::Base
   has_many :questions, through: :taggings
 
   def self.make_tags(tags, question)
-    tag_array = tags.split(" ")
+    tag_array = tags.split(", ")
     tag_array.each do |new_tag|
         old_tag = Tag.find_by(name: new_tag)
         if old_tag
