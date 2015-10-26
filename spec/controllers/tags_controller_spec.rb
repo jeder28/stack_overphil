@@ -28,5 +28,10 @@ describe TagsController do
       get :show, {id: 2}
       expect(response).to render_template("show")
     end
+
+    it "assigns tags correctly" do
+      get :show, {id: 5}
+      expect(assigns(:tag)).to eq(Tag.find(5))
+    end
   end
 end
