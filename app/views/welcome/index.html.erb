@@ -1,25 +1,14 @@
 <div class="side-btns">
-  <div class="btn">
+  <div class="btn" btn-id='vote-sort'>
     <%= link_to "Sort by highest votes", '/votes' %>
   </div>
-  <div class="btn">
+  <div class="btn" btn-id='trendy-sort'>
     <%= link_to "Sort by trendiness", '/trendiness' %>
   </div>
-  <div class="btn">
+  <div class="btn" btn-id='recent-sort'>
     <%= link_to "Sort by most recent", '/recentness' %>
   </div>
 </div>
 
-<div class="ques-list">
-  <% @questions.each do |q| %>
-  <div class="ques-item">
-    <div class="ques-deets">
-      <div class="ques-deet"><%= q.vote_count %> <br><span>votes</span></div>
-      <div class="ques-deet"><%= q.answers.size%> <br><span>answers</span></div>
-      <div class="ques-deet"><%= q.view_count %> <br><span>views</span></div>
-    </div>
-    <h3><%= link_to q.title, question_path(q) %></h3>
-  </div>
-  <% end %>
-</div>
+<%= render 'welcome/questions_list', locals: {questions: @questions} %>
 
