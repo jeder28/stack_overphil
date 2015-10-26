@@ -12,8 +12,8 @@
       <% else %>
         <%= render :partial => "questions/disabled_votes", locals: {object: answer} %>
       <% end %>
-      <% else %>
-        <%= render :partial => "questions/disabled_votes", locals: {object: answer} %>
+    <% else %>
+      <%= render :partial => "questions/disabled_votes", locals: {object: answer} %>
     <% end %>
     <div class="left-deets">
       <p><%= answer.content %></p>
@@ -26,7 +26,7 @@
     </ul>
   </div>
   <div class="content-row">
-    <%= render :partial => "responses/response", :collection => answer.responses %>
+    <%= render :partial => "responses/response", :collection => answer.sorted_responses %>
   </div>
   <div class="comment-link"><%= link_to "comment", new_answer_response_path(answer) %></div>
 </div>

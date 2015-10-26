@@ -34,8 +34,9 @@
     <hr class="divider">
   </div>
   <% if @question.responses %>
-    <%= render :partial => "responses/response", :collection => @question.responses %>
+    <%= render :partial => "responses/response", :collection => @question.sorted_responses %>
   <% end %>
+
   <div class="comment-link"><%= link_to "comment", new_question_response_path(@question) %></div>
 </div>
 <div class="answer">
