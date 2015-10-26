@@ -92,9 +92,9 @@ $(document).ready(function() {
         url: url,
         data: data
       }).done(function(response){
+        var formTextArea = thisForm.find('.ques-answer').find('.new_answer').find('.body-content').find('textarea')[0];
+        $('input[type=text], textarea').val('');
         thisForm.prepend("<div class='content-row'>" + response + "</div>");
-        thisForm.find('.body-content').reset();
       }).fail(function(){alert('Oops, something went wrong. Please contact the system administrator.')});
-    })
-
-})
+    });
+});
