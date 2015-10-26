@@ -16,7 +16,7 @@ class ResponsesController < ApplicationController
     if @response.save
       redirect_to parent_url(@parent)
     else
-      flash[:message] = "Failed to comment successfully."
+      flash.now[:alert] = "Comment must have content."
       render :new
     end
   end
