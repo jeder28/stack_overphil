@@ -25,8 +25,7 @@ class Question < ActiveRecord::Base
   end
 
   def sorted_responses
-    response_arr = self.responses.dup
-    sort_array_by_points(response_arr)
+    self.responses.order(:created_at)
   end
 
   def self.sort_by_votes
