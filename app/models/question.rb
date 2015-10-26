@@ -29,15 +29,11 @@ class Question < ActiveRecord::Base
   end
 
   def self.sort_by_trendiness
-    Question.all.where('created_at < ?', 7.days.ago).order('view_count DESC')
+    Question.all.where('created_at >= ?', DateTime.now - 7).order('view_count DESC')
   end
 
   def self.sort_by_recentness
     Question.all.order('created_at DESC')
-  end
-
-  def arrayify_title
-    title.chomp('?').downcase.split(' ')
   end
 
   def vote_on_this?(current_user_id)
