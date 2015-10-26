@@ -46,5 +46,15 @@ describe "Register process" do
       expect(page).to have_field("Username")
       expect(page).to have_field("Password")
     end
-end
+
+    it "Register will redirect properly" do 
+      visit root_path
+      click_link 'register'
+      fill_in "Email", :with => user_attr[:email]
+      fill_in "Username", :with => user_attr[:username]
+      fill_in "Password", :with => user_attr[:password]
+      click_button("Create User")
+      expect(page).to have_content user_attr[:name]
+    end
+  end
 end
