@@ -19,6 +19,7 @@ class VotesController < ApplicationController
       @question = Answer.find(params[:vote][:votable_id]).question
     end
     if @vote.save
+      object.reload
       if request.xhr?
         render '/questions/_disabled_votes.html.erb', locals: {object: object}, layout: false
       else
