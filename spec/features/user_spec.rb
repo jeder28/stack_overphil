@@ -34,3 +34,17 @@ describe 'Log in Process' do
   end
 end
 end
+
+describe "Register process" do
+  let(:user_attr){attributes_for(:user)}
+  describe "Valid user" do 
+    it "links to the right register page" do 
+      visit root_path
+      click_link 'register'
+      expect(page).to have_content("Register")
+      expect(page).to have_field("Email")
+      expect(page).to have_field("Username")
+      expect(page).to have_field("Password")
+    end
+end
+end
