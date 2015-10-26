@@ -25,7 +25,7 @@ describe TagsController do
     end
     
     it "renders show template" do
-      get :show, {id: 2}
+      get :show, tag.id
       expect(response).to render_template("show")
     end
 
