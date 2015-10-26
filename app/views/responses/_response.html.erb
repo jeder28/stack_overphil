@@ -1,4 +1,13 @@
 <div class="content-row">
+  <% if logged_in? %>
+    <% if response.vote_on_this?(current_user.id)  %>
+      <div class="vote-deets"><%= render "votes/response_vote_form", :object => response, :vote => @vote %></div>
+    <% else %>
+        <%= render :partial => "responses/disabled_votes", locals: {object: response} %>
+    <% end %>
+  <% else %>
+    <%= render :partial => "responses/disabled_votes", locals: {object: response} %>
+  <% end %>
   <p class="comment"><%= response.content %> | <%= link_to response.responder_name, user_path(response.responder_id) %> </p>
   <hr>
 </div>

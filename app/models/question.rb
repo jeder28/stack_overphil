@@ -24,6 +24,10 @@ class Question < ActiveRecord::Base
     end
   end
 
+  def sorted_responses
+    self.responses.order(:created_at)
+  end
+
   def self.sort_by_votes
     Question.all.order('vote_count DESC')
   end

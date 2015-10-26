@@ -24,4 +24,8 @@ class Answer < ActiveRecord::Base
   def best_answerable?(question, current_user_id)
     question.best_answer_id == nil && question.asker_id == current_user_id && self.answerer.id != current_user_id
   end
+
+  def sorted_responses
+    self.responses.order(:created_at)
+  end
 end
