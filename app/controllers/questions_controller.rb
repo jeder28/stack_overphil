@@ -15,13 +15,14 @@ class QuestionsController < ApplicationController
     if logged_in?
       @question = Question.new(params[:question].permit(:title, :content))
       @question.asker_id = current_user.id
+      @tag = Tag.new
       if @question.save
-        redirect_to question_path(@question)
         if tag_params != nil
           Tag.make_tags(tag_params[:name], @question)
         end
+        redirect_to question_path(@question)
       else
-        flash[:notice] = @question.errors.full_messages.join(", ")
+        flash.now[:alert] = @question.errors.full_messages.join(", ")
         render :new
       end
     else
