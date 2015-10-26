@@ -1,12 +1,56 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-  it { should have_many(:questions).with_foreign_key('asker_id') }
-  it { should have_many(:answers).with_foreign_key('answerer_id') }
-  it { should have_many(:votes).with_foreign_key('voter_id') }
-  it { should have_many(:responses).with_foreign_key('responder_id') }
+describe User, type: :model do
+  context "associations" do
+    it "should have_many questions" do
+      user = User.reflect_on_association(:questions)
+      user.macro.should == :has_many
+    end
+    it "should have_many answers" do
+      user = User.reflect_on_association(:answers)
+      user.macro.should == :has_many
+    end
+    it "should have_many votes" do
+      user = User.reflect_on_association(:votes)
+      user.macro.should == :has_many
+    end
+    it "should have_many responses" do
+      user = User.reflect_on_association(:responses)
+      user.macro.should == :has_many
+    end
+  end
 
-  it { should validate_presence_of(:password) }
-  it { should validate_presence_of(:email) }
-  it { should validate_presence_of(:username) }
+  it "should require a username" do
+      expect(FactoryGirl.build(:user, :username => "")).to be_invalid
+  end
+
+  it "should require a username" do
+      expect(FactoryGirl.build(:user, :username => "Feather")).to be_valid
+  end
+
+  it "should require an email" do
+      expect(FactoryGirl.build(:user, :email => "")).to be_invalid
+  end
+
+
+  it "should have a valid email" do
+      expect(FactoryGirl.build(:user, :email => "feather")).to be_invalid
+  end
+
+  it "should have a valid email" do
+      expect(FactoryGirl.build(:user, :email => "feather@gmail.com")).to be_valid
+  end
+
+  it "should require a password" do
+      expect(FactoryGirl.build(:user, :password => nil)).to be_invalid
+  end
+
+  it "should require a password" do
+      expect(FactoryGirl.build(:user, :password => "password")).to be_valid
+  end
+
 end
+# it "should have many teams" do
+#     t = User.reflect_on_association(:teams)
+#     t.macro.should == :has_many
+#   end
