@@ -9,6 +9,20 @@ class WelcomeController < ApplicationController
     else
       @questions = Question.all
     end
+    if request.xhr?
+      if params[:order_by] == 'votes'
+        @questions = Question.sort_by_votes
+      elsif params[:order_by] == 'trendiness'
+        @questions = Question.sort_by_trendiness
+      elsif params[:order_by] == 'recentness'
+        @questions = Question.sort_by_recentness
+      else
+        @questions = Question.all
+      end
+      render '/welcome/_questions_list.html.erb', locals: {questions: @questions}, layout: false
+    else
+      render '/welcome/index.html.erb'
+    end
   end
 
   def search

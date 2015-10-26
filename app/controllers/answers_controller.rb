@@ -4,7 +4,11 @@ class AnswersController < ApplicationController
     @answer.question = Question.find(params[:question_id])
     @answer.answerer = current_user
     if @answer.save
-      redirect_to question_path(@answer.question)
+      if request.xhr?
+        render 'answers/_answer.html.erb', locals: {answer: @answer}, layout: false
+      else
+        redirect_to question_path(@answer.question)
+      end
     else
       @question = Question.find(params[:question_id])
       @errors = @answer.errors.full_messages

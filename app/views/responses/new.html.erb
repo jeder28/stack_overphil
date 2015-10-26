@@ -1,12 +1,1 @@
-<div class="ques-answer cf">
-<%= form_for [@parent, Response.new] do |f| %>
-  <div>
-    <%= f.hidden_field :parent_id, :value => @parent.id %>
-    <h3>Make a comment:</h3>
-    <div class="body-content"><%= f.text_area :content %></div>
-  </div>
-  <div>
-    <div class="submit-btn"><%= f.submit 'comment' %></div>
-  </div>
-<% end %>
-</div>
+<%= render 'response_form.html.erb', locals: {parent: @parent, response: @response} %>
