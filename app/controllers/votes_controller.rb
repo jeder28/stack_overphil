@@ -5,17 +5,14 @@ class VotesController < ApplicationController
     type = (params[:vote][:votable_type])
     if type == "Question"
       @question = Question.find(params[:vote][:votable_id])
-    end
-    if type == "Response"
+    elsif type == "Response"
       response = Response.find(params[:vote][:votable_id])
       if response.respondable_type == "Question"
         @question = Question.find(response.respondable_id)  
-      end
-      if response.respondable_type == "Answer"
+      elsif response.respondable_type == "Answer"
         @question = Answer.find(response.respondable_id).question  
       end
-    end
-    if type == "Answer"
+    elsif type == "Answer"
       @question = Answer.find(params[:vote][:votable_id]).question
     end
     if @vote.save    
